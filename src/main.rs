@@ -1,7 +1,7 @@
+use ncurses::endwin;
+use ncurses::getch;
 use ncurses::initscr;
 use ncurses::refresh;
-use ncurses::getch;
-use ncurses::endwin;
 use std::time::Instant;
 
 #[derive(Debug)]
@@ -27,7 +27,6 @@ fn main() {
   endwin();
 
   let orig_text: String = presses.iter().map(|x| x.key as u8 as char).collect();
-
 
   let start = presses.first().unwrap().time;
   let end = presses.last().unwrap().time;
@@ -62,7 +61,12 @@ fn main() {
       let word_cps = word_len / word_duration_sec;
       let word_wpm = word_cps * 12.0;
 
-      println!("{:>16}   {:.3} sec   {:.1} wpm", &orig_text[word_start_i..word_end_i], word_duration_sec, word_wpm);
+      println!(
+        "{:>16}   {:.3} sec   {:.1} wpm",
+        &orig_text[word_start_i..word_end_i],
+        word_duration_sec,
+        word_wpm
+      );
     }
   }
 
@@ -75,7 +79,12 @@ fn main() {
   let word_cps = word_len / word_duration_sec;
   let word_wpm = word_cps * 12.0;
 
-  println!("{:>16}   {:.3} sec   {:.1} wpm", &orig_text[word_start_i..word_end_i], word_duration_sec, word_wpm);
+  println!(
+    "{:>16}   {:.3} sec   {:.1} wpm",
+    &orig_text[word_start_i..word_end_i],
+    word_duration_sec,
+    word_wpm
+  );
 
   println!("Original text: {}", orig_text);
   println!("{:.2} CPS   {:.1} WPM", cps, wpm);

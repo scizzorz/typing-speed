@@ -62,7 +62,7 @@ fn main() {
       let word_cps = word_len / word_duration_sec;
       let word_wpm = word_cps * 12.0;
 
-      println!("{} duration = {}, wpm = {}", &orig_text[word_start_i..word_end_i], word_duration_sec, word_wpm);
+      println!("{:>16}   {:.3} sec   {:.1} wpm", &orig_text[word_start_i..word_end_i], word_duration_sec, word_wpm);
     }
   }
 
@@ -75,7 +75,8 @@ fn main() {
   let word_cps = word_len / word_duration_sec;
   let word_wpm = word_cps * 12.0;
 
-  println!("{} duration = {}, wpm = {}", &orig_text[word_start_i..word_end_i], word_duration_sec, word_wpm);
+  println!("{:>16}   {:.3} sec   {:.1} wpm", &orig_text[word_start_i..word_end_i], word_duration_sec, word_wpm);
 
-  println!("cps = {:?}, wpm = {:?}", cps, wpm);
+  println!("Original text: {}", orig_text);
+  println!("{:.2} CPS   {:.1} WPM", cps, wpm);
 }
